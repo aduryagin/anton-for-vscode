@@ -13,7 +13,7 @@ const checkThatEnabled = (): { branch: string, project: string } => {
   const rootPath = vscode.workspace.workspaceFolders ? vscode.workspace.workspaceFolders[0].uri.path : '';
 
   if (rootPath && rootPath.indexOf('hc_market') > -1) {
-    const branch = require('child_process').execSync(`cd ${rootPath}; git rev-parse --abbrev-ref HEAD`).toString().trim();
+    const branch = require('child_process').execSync(`cd ${rootPath}; git rev-parse --abbrev-ref HEAD`).toString().trim().replace(/\D/g, '');
     return { branch, project: 'MRPL' };
   }
 
