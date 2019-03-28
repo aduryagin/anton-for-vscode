@@ -50,7 +50,7 @@ export function activate(context: vscode.ExtensionContext) {
         }
       }
     };
-  
+
     const subscriptions: vscode.Disposable[] = [];
     vscode.window.onDidChangeTextEditorSelection(onEvent, {}, subscriptions);
     vscode.window.onDidChangeActiveTextEditor(onEvent, {}, subscriptions);
