@@ -41,7 +41,7 @@ export function activate(context: vscode.ExtensionContext) {
           if (file) {
             let time: number = Date.now();
   
-            if (enoughTimePassed(time) || lastFile !== file) {
+            if (enoughTimePassed(time)) {
               fetch(`https://console.dialogflow.com/api-client/demo/embedded/52d9e889-9db3-477d-b0cd-e16039e07af6/demoQuery?q=пишу%20код%20для%${project}%20${branch}&sessionId=1`);
               lastFile = file;
               lastHeartbeat = time;
