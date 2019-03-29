@@ -1,8 +1,8 @@
 {
 	"name": "anton",
 	"displayName": "anton",
-  "description": "",
-  "publisher": "aduryagin",
+	"description": "",
+	"publisher": "aduryagin",
 	"version": "0.0.1",
 	"engines": {
 		"vscode": "^1.32.0"
@@ -11,17 +11,9 @@
 		"Other"
 	],
 	"activationEvents": [
-		"onCommand:extension.helloWorld"
+		"*"
 	],
 	"main": "./out/extension.js",
-	"contributes": {
-		"commands": [
-			{
-				"command": "extension.helloWorld",
-				"title": "Hello World"
-			}
-		]
-	},
 	"scripts": {
 		"vscode:prepublish": "npm run compile",
 		"compile": "tsc -p ./",
@@ -30,6 +22,7 @@
 		"test": "npm run compile && node ./node_modules/vscode/bin/test"
 	},
 	"devDependencies": {
+		"@types/lodash": "^4.14.123",
 		"@types/mocha": "^2.2.42",
 		"@types/node": "^10.12.21",
 		"@types/node-fetch": "^2.1.7",
@@ -38,6 +31,7 @@
 		"vscode": "^1.1.28"
 	},
 	"dependencies": {
+		"lodash": "^4.17.11",
 		"node-fetch": "^2.3.0"
 	}
 }
