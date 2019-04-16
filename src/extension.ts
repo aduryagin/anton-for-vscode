@@ -7,7 +7,7 @@ import debounce from 'lodash/debounce';
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
 
-const checkThatEnabled = (): { branch: string, project: string } => {
+const getProjectData = (): { branch: string, project: string } => {
   const rootPath = vscode.workspace.workspaceFolders ? vscode.workspace.workspaceFolders[0].uri.path : '';
 
   if (rootPath && rootPath.indexOf('hc_market') > -1) {
@@ -19,12 +19,11 @@ const checkThatEnabled = (): { branch: string, project: string } => {
 };
 
 export function activate(context: vscode.ExtensionContext) {
-  const projectData = checkThatEnabled();
+  const projectData = getProjectData();
 
   if (projectData.branch && projectData.project) {
-    const { branch, project } = projectData;
-
     const sendToAnton = debounce(() => {
+      const { branch, project } = getProjectData();
       fetch(encodeURI(`https://console.dialogflow.com/api-client/demo/embedded/52d9e889-9db3-477d-b0cd-e16039e07af6/demoQuery?q=пишу код для ${project} ${branch}&sessionId=1`));
     }, 2000);
   
